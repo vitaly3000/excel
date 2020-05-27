@@ -4,6 +4,7 @@ export class Emitter {
   }
 
   // уведомляем слушателей
+
   emit(event, ...args) {
     if (!Array.isArray(this.listeners[event])) {
       return false;
