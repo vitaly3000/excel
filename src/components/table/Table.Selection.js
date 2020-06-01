@@ -6,9 +6,9 @@ export class TableSelection {
   }
   select($el) {
     this.clear();
+    $el.focus().addClass(TableSelection.className);
     this.group.push($el);
     this.current = $el;
-    $el.focus().addClass(TableSelection.className);
   }
   clear() {
     this.group.forEach(($el) => $el.removeClass(TableSelection.className));
