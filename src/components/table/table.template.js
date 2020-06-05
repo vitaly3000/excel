@@ -1,3 +1,5 @@
+import { toInlineStyles } from '../../core/utils';
+
 const CODES = {
   A: 65,
   Z: 90,
@@ -12,9 +14,10 @@ function getHeight(state, index) {
 }
 function toCell(state, row) {
   return function(_, col) {
-    const id = `${row}:${col}`
-    const width = getWidth(state.colState, col)
-    const data = state.dataState[id]
+    const id = `${row}:${col}`;
+    const width = getWidth(state.colState, col);
+    const data = state.dataState[id];
+    const styles = toInlineStyles(state.stylesState[id]);
     return `
       <div 
       class='cell' 
@@ -22,7 +25,7 @@ function toCell(state, row) {
       data-col="${col}" 
       data-type="cell"
       data-id ="${id}"
-      style="width: ${width}"
+      style="${styles};width: ${width}"
       >${data || ''}</div>
      `;
   };
@@ -42,7 +45,7 @@ function createRow(index, content, state) {
   const resize = index
     ? '<div class="row-resize" data-resize="row"></div>'
     : '';
-  const height = getHeight(state, index)
+  const height = getHeight(state, index);
   return `
  <div class="row" 
  data-type="resizable" 
@@ -59,7 +62,6 @@ function createRow(index, content, state) {
 function toChar(_, index) {
   return String.fromCharCode(CODES.A + index);
 }
-
 
 function withWidthFrom(state) {
   return function(col, index) {
