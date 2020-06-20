@@ -4,6 +4,7 @@ import {
   CHANGE_STYLES,
   APPLY_STYLE,
   CHANGE_TITLE,
+  UPDATE_DATE,
 } from './types';
 
 // action Creator
@@ -23,6 +24,11 @@ export function changeStyles(data) {
   return {
     type: CHANGE_STYLES,
     data,
+  };
+}
+export function updateDate() {
+  return {
+    type: UPDATE_DATE,
   };
 }
 // value ,ids
