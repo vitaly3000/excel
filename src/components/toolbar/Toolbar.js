@@ -23,7 +23,6 @@ export class Toolbar extends ExcelStateComponent {
   }
   storeChanged(changes) {
     this.setState(changes.currentStyles)
-    console.log('dwdw33', changes)
   }
   onClick(event) {
     const $target = $(event.target);
